@@ -6,6 +6,10 @@ var distanceValue;
 var ageValue;
 var cost;
 
+var userAge = document.getElementById('user-age');
+var userDistance = document.getElementById('user-distance');
+var userCost = document.getElementById('user-cost');
+
 
 function getForm() {
 
@@ -15,9 +19,11 @@ function getForm() {
     } else {
         distanceValue = distance.value;
         ageValue = age.value;
-        calcCost();
-        verifyDiscount();
     }
+
+    calcCost();
+    verifyDiscount();
+    output();
 
 }
 
@@ -32,7 +38,7 @@ function calcCost() {
 
     cost = distanceValue * costforKm;
 
-    console.log(cost);
+    //console.log(cost);
 
 }
 
@@ -47,12 +53,12 @@ function verifyDiscount() {
         if (ageValue <= 17) {
 
             cost -= (cost / 100) * 20;
-            console.log(cost);
+            //console.log(cost);
 
         } else if (ageValue >= 66) {
 
             cost -= (cost / 100) * 40;
-            console.log(cost);
+            //console.log(cost);
         }
 
     } else {
@@ -60,6 +66,15 @@ function verifyDiscount() {
         alert('Non hai diritto allo sconto');
 
     }
+
+}
+
+
+function output() {
+
+    userAge.innerHTML = ageValue;
+    userDistance.innerHTML = distanceValue;
+    userCost.innerHTML = cost.toFixed(2);
 
 }
 
